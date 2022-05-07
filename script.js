@@ -20,17 +20,37 @@ function generatePassword() {
   if (isNaN(userLgth) || userLgth < 8 || userLgth > 128) {
     userLgth = prompt("number must be within 8 - 128");
   } else {
-    var userLowcase = confirm("Would you like lowercase letters?");
-    // var userUpper = confirm("Would you like UPPER case letters?");
-    // var userNum = confirm("Would you like to use numbers?");
-    // var userSpec = confirm("would you like to have any special characters?");
+    
+  }
+  var userLowcase = confirm("Would you like lowercase letters?");
+  
+  
+    var userUpper = confirm("Would you like UPPER case letters?");
+    var userNum = confirm("Would you like to use numbers?");
+    var userSpec = confirm("would you like to have any special characters?");
  
     var passSelect = {
-      length: userLgth,
-      // lettLow: userLowcase,
-      // lettUp: userUpper,
-      // lettNum: userNum,
-      // lettSpec: userSpec,
+      length: lowChar,
+      lettLow: userLowcase,
+      lettUp: userUpper,
+      lettNum: userNum,
+      lettSpec: userSpec,
+    }
+  
+  function generate(event) {
+    event.preventDefault();
+  }
+  
+  document.getElementById("generate").addEventListener("click", password, generate); {
+    var generateBtn = document.getElementById(password);
+    generateBtn.style.backgroundColor = "orange";
+        for (var i = 0; i < lowChar.length; i++); {
+         Math.floor(Math.random(lowChar.length[i]));
+      
+      append(password)
+      
+
+  } 
     }
 
     
@@ -38,6 +58,7 @@ function generatePassword() {
     
   }
 
+  // generatePassword()
   // var loChoice = [];
   // if (passSelect.lettLow) {
   //   for (var i = 0; i < passSelect.length; i++) {
@@ -68,7 +89,7 @@ function generatePassword() {
   //       lettUp.push(lettSpec);
   //     }
     
-    }
+    
     // element.innerhtml  return  back to there
 
     // Get references to the #generate element
@@ -82,13 +103,13 @@ function generatePassword() {
     passwordText.value = password;
 
     // Add event listener to generate button
-generateBtn.addEventListener("click", password); {
-  for (var i = 0; i < generatePassword; i++); {
-    var ranPass = Math.floor(Math.random() * passSelect.length);
-    password += passSelect.length(ranPass, ranPass + 1);
+// generateBtn.addEventListener("click", password); {
+//   for (var i = 0; i < generatePassword; i++); {
+//     var ranPass = Math.floor(Math.random() * passSelect.length);
+//     password += passSelect.length(ranPass, ranPass + 1);
 
-  } 
-    }
+//   } 
+//     }
 
   console.log(generatePassword)
 
