@@ -157,6 +157,16 @@ function generatePassword() {
     "Would you like Special Charcters? Click Ok for yes, and cancel for No"
   );
 
+  if (
+    lowCaseChoice == false &&
+    upperCaseChoice == false &&
+    numberChoice == false &&
+    specialCharChoice == false
+  ) {
+    alert("You must select at leat one charcter type");
+    return;
+  }
+
   if (specialCharChoice == true) {
     for (let i = 0; i < userLgth; i++) {
       let nextChar = Math.floor(Math.random() * specChar.length);
@@ -171,21 +181,14 @@ function generatePassword() {
   for (let i = 0; i < userLgth; i++) {
     passWord.value += finalChoice[i];
   }
-  // if (
-  //   (lowCaseChoice == false,
-  //   upperCaseChoice == false,
-  //   numberChoice == false,
-  //   specialCharChoice == false)
-  // ) {
-  //   alert("You must select at leat one charcter type");
-  //   return;
-  // }
+
+  console.log(finalChoice);
+
   // console.log(specialCharChoice);
   // console.log(charChoice);
   // console.log(lowCaseChoice);
   // console.log(upperCaseChoice);
   // console.log(numberChoice);
-  console.log(finalChoice);
 }
 
 generateBtn.addEventListener("click", generatePassword);
