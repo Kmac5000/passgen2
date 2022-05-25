@@ -98,6 +98,7 @@ const specChar = [
 ];
 
 function generatePassword() {
+  passWord.value = "";
   let userLgth;
   let lowCaseChoice;
   let upperCaseChoice;
@@ -115,7 +116,7 @@ function generatePassword() {
   );
 
   if (isNaN(userLgth) || userLgth < 8 || userLgth > 128) {
-    alert("number must be within 8 - 128");
+    alert("Must be within 8 - 128 Characters\n Please Try Again");
     return;
   }
 
