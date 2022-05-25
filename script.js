@@ -104,6 +104,7 @@ function generatePassword() {
   let numberChoice;
   let specialCharChoice;
   let charChoice = [];
+  let finalChoice = [];
 
   userLgth = parseInt(
     Number(
@@ -164,7 +165,7 @@ function generatePassword() {
 
   for (let i = 0; i < userLgth; i++) {
     let password = Math.floor(Math.random() * charChoice.length);
-    passWord.value = password;
+    finalChoice.push(charChoice[password]);
   }
   // if (
   //   (lowCaseChoice == false,
@@ -175,11 +176,12 @@ function generatePassword() {
   //   alert("You must select at leat one charcter type");
   //   return;
   // }
-  console.log(specialCharChoice);
-  console.log(charChoice);
-  console.log(lowCaseChoice);
-  console.log(upperCaseChoice);
-  console.log(numberChoice);
+  // console.log(specialCharChoice);
+  // console.log(charChoice);
+  // console.log(lowCaseChoice);
+  // console.log(upperCaseChoice);
+  // console.log(numberChoice);
+  console.log(finalChoice);
 }
 
 generateBtn.addEventListener("click", generatePassword);
