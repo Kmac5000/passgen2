@@ -167,6 +167,9 @@ function generatePassword() {
     let password = Math.floor(Math.random() * charChoice.length);
     finalChoice.push(charChoice[password]);
   }
+  for (let i = 0; i < userLgth; i++) {
+    passWord.value += finalChoice[i];
+  }
   // if (
   //   (lowCaseChoice == false,
   //   upperCaseChoice == false,
