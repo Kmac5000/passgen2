@@ -1,115 +1,185 @@
 // Assignment code here
 
+const cardBody = document.querySelector(".card-body");
+const passWord = document.querySelector("#password");
+const generateBtn = document.querySelector("#generate");
 
+const lowChar = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
 
+const upChar = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
 
+const numChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-var lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
- 
-var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
-var numChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-var specChar = ["","!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";",">","<","=","?","@","[","]","^","_","{","}","|","~",]
+const specChar = [
+  "",
+  "!",
+  "#",
+  "$",
+  "%",
+  "&",
+  "'",
+  "(",
+  ")",
+  "*",
+  "+",
+  ",",
+  "-",
+  ".",
+  "/",
+  ":",
+  ";",
+  ">",
+  "<",
+  "=",
+  "?",
+  "@",
+  "[",
+  "]",
+  "^",
+  "_",
+  "{",
+  "}",
+  "|",
+  "~",
+];
 
 function generatePassword() {
-  
-  var userLgth = prompt("How many charcters for your password?");
+  let userLgth;
+  let lowCaseChoice;
+  let upperCaseChoice;
+  let numberChoice;
+  let specialCharChoice;
+  let charChoice = [];
 
+  userLgth = parseInt(
+    Number(
+      prompt(
+        "How many charcters for your password? (between 8-128 charachters)"
+      )
+    )
+  );
 
   if (isNaN(userLgth) || userLgth < 8 || userLgth > 128) {
-    userLgth = prompt("number must be within 8 - 128");
-  } else {
-    
+    alert("number must be within 8 - 128");
+    return;
   }
-  var userLowcase = confirm("Would you like lowercase letters?");
-  
-  
-    var userUpper = confirm("Would you like UPPER case letters?");
-    var userNum = confirm("Would you like to use numbers?");
-    var userSpec = confirm("would you like to have any special characters?");
- 
-    var passSelect = {
-      length: lowChar,
-      lettLow: userLowcase,
-      lettUp: userUpper,
-      lettNum: userNum,
-      lettSpec: userSpec,
+
+  lowCaseChoice = confirm(
+    "Would you like lowercase letters? Click Ok for yes, and cancel for No"
+  );
+
+  if (lowCaseChoice == true) {
+    for (let i = 0; i < userLgth; i++) {
+      let nextChar = Math.floor(Math.random() * lowChar.length);
+      charChoice.push(lowChar[nextChar]);
     }
-  
-  function generate(event) {
-    event.preventDefault();
   }
-  
-  document.getElementById("generate").addEventListener("click", password, generate); {
-    var generateBtn = document.getElementById(password);
-    generateBtn.style.backgroundColor = "orange";
-        for (var i = 0; i < lowChar.length; i++); {
-         Math.floor(Math.random(lowChar.length[i]));
-      
-      append(password)
-      
 
-  } 
+  upperCaseChoice = confirm(
+    "Would you like UPPERCASE letters? Click Ok for yes, and cancel for No"
+  );
+
+  if (upperCaseChoice == true) {
+    for (let i = 0; i < userLgth; i++) {
+      let nextChar = Math.floor(Math.random() * upChar.length);
+      charChoice.push(upChar[nextChar]);
     }
-
-    
-    
-    
   }
 
-  // generatePassword()
-  // var loChoice = [];
-  // if (passSelect.lettLow) {
-  //   for (var i = 0; i < passSelect.length; i++) {
-  //     var lettLow = lowChar[Math.floor(Math.random()) * passSelect.length];
-  //     lettUp.push(lettLow);
-  //   }
+  numberChoice = confirm(
+    "Would you like numbers? Click Ok for yes, and cancel for No"
+  );
 
+  if (numberChoice == true) {
+    for (let i = 0; i < userLgth; i++) {
+      let nextChar = Math.floor(Math.random() * numChar.length);
+      charChoice.push(numChar[nextChar]);
+    }
+  }
+
+  specialCharChoice = confirm(
+    "Would you like Special Charcters? Click Ok for yes, and cancel for No"
+  );
+
+  if (specialCharChoice == true) {
+    for (let i = 0; i < userLgth; i++) {
+      let nextChar = Math.floor(Math.random() * specChar.length);
+      charChoice.push(specChar[nextChar]);
+    }
+  }
+
+  for (let i = 0; i < userLgth; i++) {
+    let password = Math.floor(Math.random() * charChoice.length);
+    passWord.value = password;
+  }
+  // if (
+  //   (lowCaseChoice == false,
+  //   upperCaseChoice == false,
+  //   numberChoice == false,
+  //   specialCharChoice == false)
+  // ) {
+  //   alert("You must select at leat one charcter type");
+  //   return;
   // }
+  console.log(specialCharChoice);
+  console.log(charChoice);
+  console.log(lowCaseChoice);
+  console.log(upperCaseChoice);
+  console.log(numberChoice);
+}
 
-  // var upChoice = [];
-  // if (passSelect.lettUp)
-  //   for (var i = 0; i < passSelect.length; i++) {
-  //     var upchoice = upChar[Math.floor(Math.random()) * passSelect.length];
-  //     lettUp.push(lettUp);
-  //   }
-  // var numChoice = [];
-  // if (passSelect.lettNum) {
-  //   for (var i = 0; i < passSelect.length; i++) {
-  //     var lettLow = lowChar[Math.floor(Math.random()) * passSelect.length];
-  //     lettUp.push(lettNum);
-  //   }
-
-  
-  //   var specChoice = [];
-  //   if (passSelect.lettSpec) {
-  //     for (var i = 0; i < passSelect.length; i++) {
-  //       var lettLow = lowChar[Math.floor(Math.random()) * passSelect.length];
-  //       lettUp.push(lettSpec);
-  //     }
-    
-    
-    // element.innerhtml  return  back to there
-
-    // Get references to the #generate element
-    var generateBtn = document.querySelector("#generate");
-
-    // Write password to the #password input
-
-    var password = generatePassword("");
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-
-    // Add event listener to generate button
-// generateBtn.addEventListener("click", password); {
-//   for (var i = 0; i < generatePassword; i++); {
-//     var ranPass = Math.floor(Math.random() * passSelect.length);
-//     password += passSelect.length(ranPass, ranPass + 1);
-
-//   } 
-//     }
-
-  console.log(generatePassword)
-
+generateBtn.addEventListener("click", generatePassword);
